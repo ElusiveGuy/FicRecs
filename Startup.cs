@@ -48,7 +48,8 @@ namespace FicRecs
                 app.UseHsts();
             }
 
-            app.UseHttpsRedirection();
+            app.UseForwardedHeaders();
+
             app.UseStaticFiles();
             app.UseCookiePolicy();
 
