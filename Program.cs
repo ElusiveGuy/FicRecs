@@ -83,12 +83,16 @@ namespace FicRecs_ExcelImporter
                                     Similarity = matrixsheet.Cells[row, col].GetValue<float>()
                                 };
                             }
-                            catch (Exception ex)
+                            catch (InvalidCastException)
                             {
-                                Console.WriteLine(ex);
-                                Console.WriteLine($"{row} {col}");
-                                Console.WriteLine(matrixsheet.Cells[row, col]);
-                                throw ex;
+                                if (matrixsheet.Cells[row, col].GetValue<string>() == "#NUM!")
+                                {
+                                    continue;
+                                }
+                                else
+                                {
+                                    throw;
+                                }
                             }
                         }
                     }
