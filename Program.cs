@@ -52,7 +52,7 @@ namespace FicRecs_ExcelImporter
                             Characters = GetCol<string>(row, "Characters"),
                             Chapters = GetCol<short>(row, "Chapters"),
                             Words = GetCol<int>(row, "Words"),
-                            Reviews = GetCol<int>(row, "Reviews"),
+                            Reviews = GetCol<int>(row, "Review"),
                             Favs = GetCol<int>(row, "Favs"),
                             Follows = GetCol<int>(row, "Follows"),
                             Published = GetCol<DateTime>(row, "Published"),
