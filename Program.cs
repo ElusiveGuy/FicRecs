@@ -56,7 +56,7 @@ namespace FicRecs_ExcelImporter
                             Favs = GetCol<int>(row, "Favs"),
                             Follows = GetCol<int>(row, "Follows"),
                             Published = GetCol<DateTime>(row, "Published"),
-                            Url = GetCol<string>(row, "Url")
+                            Url = GetCol<string>(row, "URL")
                         };
                         var complete = GetCol<string>(row, "Complete");
                         if (complete == "Complete")
