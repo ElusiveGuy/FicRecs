@@ -65,8 +65,6 @@ namespace FicRecs_ExcelImporter
                             story.Complete = false;
                         else
                             story.Complete = null;
-
-                        Console.WriteLine(story.StoryId);
                         
                         rowidmap[GetCol<int>(row, "Row")] = GetCol<int>(row, "ID");
                     }
@@ -76,14 +74,22 @@ namespace FicRecs_ExcelImporter
                     {
                         for (; matrixsheet.Cells[row, col].Value != null; col++)
                         {
-                            var matrix = new StoryMatrix()
+                            try
                             {
-                                StoryA = rowidmap[row],
-                                StoryB = rowidmap[col],
-                                Similarity = matrixsheet.Cells[col, row].GetValue<float>()
-                            };
-
-                            Console.WriteLine("{0} {1} {2}", matrix.StoryA, matrix.StoryB, matrix.Similarity);
+                                var matrix = new StoryMatrix()
+                                {
+                                    StoryA = rowidmap[row],
+                                    StoryB = rowidmap[col],
+                                    Similarity = matrixsheet.Cells[row, col].GetValue<float>()
+                                };
+                            }
+                            catch (Exception ex)
+                            {
+                                Console.WriteLine(ex);
+                                Console.WriteLine($"{row} {col}");
+                                Console.WriteLine(matrixsheet.Cells[row, col]);
+                                throw ex;
+                            }
                         }
                     }
                 }
