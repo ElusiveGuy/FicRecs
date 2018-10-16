@@ -85,14 +85,16 @@ namespace FicRecs_ExcelImporter
                             }
                             catch (InvalidCastException)
                             {
-                                Console.WriteLine(matrixsheet.Cells[row, col].Value.GetType());
-                                Console.WriteLine(matrixsheet.Cells[row, col].Value.ToString());
-                                if (matrixsheet.Cells[row, col].GetValue<string>() == "#NUM!")
+                                if (matrixsheet.Cells[row, col].GetValue<ExcelErrorValue>().Type == eErrorType.Num)
                                 {
                                     continue;
                                 }
                                 else
                                 {
+                                    Console.WriteLine("[{0}] ({1}) {2}",
+                                        matrixsheet.Cells[row, col].Value,
+                                        matrixsheet.Cells[row, col].Value.GetType(),
+                                        matrixsheet.Cells[row, col].Value.ToString());
                                     throw;
                                 }
                             }
