@@ -85,6 +85,8 @@ namespace FicRecs_ExcelImporter
                             }
                             catch (InvalidCastException)
                             {
+                                Console.WriteLine(matrixsheet.Cells[row, col].Value.GetType());
+                                Console.WriteLine(matrixsheet.Cells[row, col].Value.ToString());
                                 if (matrixsheet.Cells[row, col].GetValue<string>() == "#NUM!")
                                 {
                                     continue;
