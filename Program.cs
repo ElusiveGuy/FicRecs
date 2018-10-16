@@ -66,6 +66,8 @@ namespace FicRecs_ExcelImporter
                         else
                             story.Complete = null;
                         
+                        context.StoryDetails.Add(story);
+                        
                         rowidmap[GetCol<int>(row, "Row")] = GetCol<int>(row, "ID");
                     }
 
@@ -82,6 +84,8 @@ namespace FicRecs_ExcelImporter
                                     StoryB = rowidmap[col],
                                     Similarity = matrixsheet.Cells[row, col].GetValue<float>()
                                 };
+
+                                context.StoryMatrix.Add(matrix);
                             }
                             catch (InvalidCastException)
                             {
@@ -100,6 +104,8 @@ namespace FicRecs_ExcelImporter
                             }
                         }
                     }
+
+                    context.SaveChanges();
                 }
             }
         }
