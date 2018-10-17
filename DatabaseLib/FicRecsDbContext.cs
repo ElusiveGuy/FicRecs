@@ -4,13 +4,13 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace FicRecs.DatabaseLib
 {
-    public partial class FicrecsDbContext : DbContext
+    public partial class FicRecsDbContext : DbContext
     {
-        public FicrecsDbContext()
+        public FicRecsDbContext()
         {
         }
 
-        public FicrecsDbContext(DbContextOptions<FicrecsDbContext> options)
+        public FicRecsDbContext(DbContextOptions<FicRecsDbContext> options)
             : base(options)
         {
         }

@@ -25,7 +25,7 @@ namespace FicRecs.ExcelImporter
             
             using (var p = new ExcelPackage(file))
             {
-                using (var context = new FicrecsDbContext())
+                using (var context = new FicRecsDbContext())
                 {
                     var detailsheet = p.Workbook.Worksheets["Fic info"];
                     var colnames = new Dictionary<string, int>();
