@@ -1,0 +1,101 @@
+@model IEnumerable<FicRecs.DatabaseLib.StoryDetails>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Author)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Summary)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Characters)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Chapters)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Words)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Reviews)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Favs)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Follows)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Published)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Complete)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Url)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Author)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Summary)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Characters)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Chapters)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Words)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Reviews)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Favs)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Follows)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Published)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Complete)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Url)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.StoryId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.StoryId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.StoryId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
