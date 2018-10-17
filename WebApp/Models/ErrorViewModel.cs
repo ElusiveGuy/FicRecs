@@ -1,6 +1,6 @@
 using System;
 
-namespace FicRecs.Models
+namespace FicRecs.WebApp.Models
 {
     public class ErrorViewModel
     {

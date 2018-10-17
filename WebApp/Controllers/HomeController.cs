@@ -4,9 +4,9 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using FicRecs.Models;
+using FicRecs.WebApp.Models;
 
-namespace FicRecs.Controllers
+namespace FicRecs.WebApp.Controllers
 {
     public class HomeController : Controller
     {
