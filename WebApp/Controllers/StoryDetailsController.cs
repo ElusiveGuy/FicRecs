@@ -57,8 +57,8 @@ namespace WebApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(storyDetails);
-                await _context.SaveChangesAsync();
+                //_context.Add(storyDetails);
+                //await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
             return View(storyDetails);
@@ -96,8 +96,8 @@ namespace WebApp.Controllers
             {
                 try
                 {
-                    _context.Update(storyDetails);
-                    await _context.SaveChangesAsync();
+                    //_context.Update(storyDetails);
+                    //await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -139,8 +139,8 @@ namespace WebApp.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var storyDetails = await _context.StoryDetails.FindAsync(id);
-            _context.StoryDetails.Remove(storyDetails);
-            await _context.SaveChangesAsync();
+            //_context.StoryDetails.Remove(storyDetails);
+            //await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
