@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace FicRecs.foo
+namespace FicRecs.DatabaseLib
 {
     public partial class StoryMatrix
     {

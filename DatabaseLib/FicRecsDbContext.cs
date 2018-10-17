@@ -2,15 +2,15 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
-namespace FicRecs.foo
+namespace FicRecs.DatabaseLib
 {
-    public partial class dbContext : DbContext
+    public partial class FicrecsDbContext : DbContext
     {
-        public dbContext()
+        public FicrecsDbContext()
         {
         }
 
-        public dbContext(DbContextOptions<dbContext> options)
+        public FicrecsDbContext(DbContextOptions<FicrecsDbContext> options)
             : base(options)
         {
         }
