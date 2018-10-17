@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using FicRecs_ExcelImporter.Models;
+using FicRecs.DatabaseLib;
 using OfficeOpenXml;
 
-namespace FicRecs_ExcelImporter
+namespace FicRecs.ExcelImporter
 {
     class Program
     {
@@ -25,7 +25,7 @@ namespace FicRecs_ExcelImporter
             
             using (var p = new ExcelPackage(file))
             {
-                using (var context = new FicrecDbContext())
+                using (var context = new FicrecsDbContext())
                 {
                     var detailsheet = p.Workbook.Worksheets["Fic info"];
                     var colnames = new Dictionary<string, int>();
