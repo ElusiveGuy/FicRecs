@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FicRecs-ExcelImporter", "Ex
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FicRecs", "WebApp\FicRecs.csproj", "{D3AC8ADF-637E-4E6D-AA09-D204B86A60B1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatabaseLib", "DatabaseLib\DatabaseLib.csproj", "{8612E202-1A2E-4565-ABC6-6AD9CF53ECF3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -44,5 +46,17 @@ Global
 		{D3AC8ADF-637E-4E6D-AA09-D204B86A60B1}.Release|x64.Build.0 = Release|Any CPU
 		{D3AC8ADF-637E-4E6D-AA09-D204B86A60B1}.Release|x86.ActiveCfg = Release|Any CPU
 		{D3AC8ADF-637E-4E6D-AA09-D204B86A60B1}.Release|x86.Build.0 = Release|Any CPU
+		{8612E202-1A2E-4565-ABC6-6AD9CF53ECF3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8612E202-1A2E-4565-ABC6-6AD9CF53ECF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8612E202-1A2E-4565-ABC6-6AD9CF53ECF3}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{8612E202-1A2E-4565-ABC6-6AD9CF53ECF3}.Debug|x64.Build.0 = Debug|Any CPU
+		{8612E202-1A2E-4565-ABC6-6AD9CF53ECF3}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{8612E202-1A2E-4565-ABC6-6AD9CF53ECF3}.Debug|x86.Build.0 = Debug|Any CPU
+		{8612E202-1A2E-4565-ABC6-6AD9CF53ECF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8612E202-1A2E-4565-ABC6-6AD9CF53ECF3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8612E202-1A2E-4565-ABC6-6AD9CF53ECF3}.Release|x64.ActiveCfg = Release|Any CPU
+		{8612E202-1A2E-4565-ABC6-6AD9CF53ECF3}.Release|x64.Build.0 = Release|Any CPU
+		{8612E202-1A2E-4565-ABC6-6AD9CF53ECF3}.Release|x86.ActiveCfg = Release|Any CPU
+		{8612E202-1A2E-4565-ABC6-6AD9CF53ECF3}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
