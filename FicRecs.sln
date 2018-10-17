@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26124.0
 MinimumVisualStudioVersion = 15.0.26124.0
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FicRecs-ExcelImporter", "ExcelImporter\FicRecs-ExcelImporter.csproj", "{ECE93FA0-71DD-4C2B-B41A-BA0C8C1AB144}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExcelImporter", "ExcelImporter\ExcelImporter.csproj", "{ECE93FA0-71DD-4C2B-B41A-BA0C8C1AB144}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FicRecs", "WebApp\FicRecs.csproj", "{D3AC8ADF-637E-4E6D-AA09-D204B86A60B1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApp", "WebApp\WebApp.csproj", "{D3AC8ADF-637E-4E6D-AA09-D204B86A60B1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatabaseLib", "DatabaseLib\DatabaseLib.csproj", "{8612E202-1A2E-4565-ABC6-6AD9CF53ECF3}"
 EndProject
