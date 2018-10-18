@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using FicRecs.DatabaseLib;
+using FicRecs.WebApp.Models;
 
 namespace WebApp.Controllers
 {
@@ -26,12 +27,19 @@ namespace WebApp.Controllers
 
         public async Task<IActionResult> Similar(int storyId)
         {
+            var selectedFic = _context.StoryDetails.Where(d => d.StoryId == storyId);
             var similarFics = _context.StoryMatrix
                                 .Where(m => m.StoryA == storyId)
                                 .OrderByDescending(m => m.Similarity)
-                                .Join(_context.StoryDetails, m => m.StoryB, s => s.StoryId, (m, s) => s);
-            var page = similarFics.Take(10);    
-            return View(await page.ToListAsync());
+                                .Join(_context.StoryDetails, m => m.StoryB, d => d.StoryId, (m, d) => d);
+            
+
+            var model = new StorySimilarViewModel
+            {
+                SelectedFic = await selectedFic.SingleOrDefaultAsync(),
+                SimilarFics = await similarFics.Take(20).ToListAsync(),
+            };
+            return View(model);
         }
 
         // GET: StoryDetails/Details/5
