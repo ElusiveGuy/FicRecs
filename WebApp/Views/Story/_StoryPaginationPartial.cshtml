@@ -1,7 +1,3 @@
 @model StoryPaginationViewModel
 
-@{
-    var qs = Context.Request.Query.Keys.Cast<string>().ToDictionary(k => k, v => Context.Request.Query[v]);
-}
-
-<a asp-all-route-data="qs"><< First</a>| <a>< Prev</a> | Page @Model.CurrentPage of @Model.TotalPages | <a>Next ></a> | <a>Last >></a>
+<a class="pagination-link" data-page="1"><< First</a> | <a class="pagination-link" data-page="@(Math.Max(Model.CurrentPage - 1, 1))">< Prev</a> | Page @Model.CurrentPage of @Model.TotalPages | <a class="pagination-link" data-page="@(Math.Min(Model.CurrentPage + 1, Model.TotalPages))">Next ></a> | <a class="pagination-link" data-page="@Model.TotalPages">Last >></a>
