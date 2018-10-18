@@ -6,4 +6,19 @@
 
 <h2>Index</h2>
 
+<form method="GET">
+    @if (Model.ShowDetailed)
+    {
+        <input type="hidden" name="showDetailed" value="false" />
+        <button type="submit" class="btn btn-default">Show simple tables</button>
+    }
+    else
+    {
+        <input type="hidden" name="showDetailed" value="true" />
+        <button type="submit" class="btn btn-default">Show detailed tables</button>
+    }
+</form>
+
+@await Html.PartialAsync("_StoryPaginationPartial", new StoryPaginationViewModel { CurrentPage = Model.CurrentPage, TotalPages = Model.TotalPages })
+
 @await Html.PartialAsync("_StoryListPartial", new StoryListViewModel { Fics = Model.Fics, ShowDetailed = Model.ShowDetailed })

@@ -10,6 +10,6 @@ namespace FicRecs.WebApp.Models
 
         public bool ShowDetailed { get; set; }
 
-        public bool ShowSimilarButton { get; set; }
+        public bool ShowSimilarButton { get; set; } = true;
     }
 }
