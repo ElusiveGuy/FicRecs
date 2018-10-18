@@ -4,44 +4,47 @@
     ViewData["Title"] = "Index";
 }
 
+@{  // https://stackoverflow.com/a/13780314
+    var dummyfic = Model.Fics.FirstOrDefault();
+}
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Fics.Title)
+                @Html.DisplayNameFor(model => dummyfic.Title)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Fics.Author)
+                @Html.DisplayNameFor(model => dummyfic.Author)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Fics.Summary)
+                @Html.DisplayNameFor(model => dummyfic.Summary)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Fics.Characters)
+                @Html.DisplayNameFor(model => dummyfic.Characters)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Fics.Chapters)
+                @Html.DisplayNameFor(model => dummyfic.Chapters)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Fics.Words)
+                @Html.DisplayNameFor(model => dummyfic.Words)
             </th>
             @if (ShowDetail)
             {
                 <th>
-                    @Html.DisplayNameFor(model => model.Fics.Reviews)
+                    @Html.DisplayNameFor(model => dummyfic.Reviews)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Fics.Favs)
+                    @Html.DisplayNameFor(model => dummyfic.Favs)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Fics.Follows)
+                    @Html.DisplayNameFor(model => dummyfic.Follows)
                 </th>
             }
             <th>
-                @Html.DisplayNameFor(model => model.Fics.Published)
+                @Html.DisplayNameFor(model => dummyfic.Published)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Fics.Complete)
+                @Html.DisplayNameFor(model => dummyfic.Complete)
             </th>
             <th></th>
         </tr>
