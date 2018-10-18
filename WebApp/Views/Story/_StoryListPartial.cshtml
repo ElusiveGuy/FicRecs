@@ -28,7 +28,7 @@
             <th>
                 @Html.DisplayNameFor(model => dummyfic.Words)
             </th>
-            @if (Model.ShowDetail)
+            @if (Model.ShowDetailed)
             {
                 <th>
                     @Html.DisplayNameFor(model => dummyfic.Reviews)
@@ -70,7 +70,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Words)
             </td>
-            @if (Model.ShowDetail)
+            @if (Model.ShowDetailed)
             {
                 <td>
                     @Html.DisplayFor(modelItem => item.Reviews)
