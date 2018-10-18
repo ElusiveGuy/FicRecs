@@ -25,7 +25,7 @@ namespace WebApp.Controllers
             return View(await _context.StoryDetails.ToListAsync());
         }
 
-        public async Task<IActionResult> Similar(int storyId, bool showDetailed)
+        public async Task<IActionResult> Similar(int storyId = -1, bool showDetailed = false, int page = 1)
         {
             var selectedFic = _context.StoryDetails.Where(d => d.StoryId == storyId);
             var similarFics = _context.StoryMatrix
@@ -33,13 +33,16 @@ namespace WebApp.Controllers
                                 .OrderByDescending(m => m.Similarity)
                                 .Join(_context.StoryDetails, m => m.StoryB, d => d.StoryId, (m, d) => d);
             
+            var pageSize = 20;
 
             var model = new StorySimilarViewModel
             {
                 StoryId = storyId,
                 ShowDetailed = showDetailed,
                 SelectedFic = await selectedFic.SingleOrDefaultAsync(),
-                SimilarFics = await similarFics.Take(20).ToListAsync(),
+                SimilarFics = await similarFics.Skip((page - 1) * pageSize).Take(page * pageSize).ToListAsync(),
+                CurrentPage = page,
+                TotalPages = await similarFics.CountAsync() / pageSize
             };
             return View(model);
         }

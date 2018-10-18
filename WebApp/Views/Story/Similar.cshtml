@@ -20,6 +20,8 @@
     }
 </form>
 
+@await Html.PartialAsync("_StoryPaginationPartual", new StoryPaginationViewModel { CurrentPage = Model.CurrentPage, TotalPages = Model.Totalpages })
+
 <h3>Selected Fic</h2>
 
 @await Html.PartialAsync("_StoryListPartial", new StoryListViewModel { Fics = Model.SelectedFicAsEnumerable, ShowDetailed = Model.ShowDetailed, ShowSimilarButton = false })
