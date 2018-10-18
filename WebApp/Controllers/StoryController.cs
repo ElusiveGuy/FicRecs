@@ -31,7 +31,7 @@ namespace WebApp.Controllers
                                 .OrderByDescending(m => m.Similarity)
                                 .Join(_context.StoryDetails, m => m.StoryB, s => s.StoryId, (m, s) => s);
             var page = similarFics.Take(10);    
-            return View(await similarFics.ToListAsync());
+            return View(await page.ToListAsync());
         }
 
         // GET: StoryDetails/Details/5
