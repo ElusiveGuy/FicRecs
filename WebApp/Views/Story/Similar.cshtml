@@ -8,7 +8,7 @@
 
 <form method="GET">
     <input type="hidden" name="storyId" value="@item.StoryId" />
-    @if (Mode.ShowDetailed)
+    @if (Model.ShowDetailed)
     {
         <input type="hidden" name="showDetailed" value="true" />
         <button type="submit" class="btn btn-default">Show detailed tables</button>
@@ -22,8 +22,8 @@
 
 <h3>Selected Fic</h2>
 
-@await Html.PartialAsync("_StoryListPartial", new StoryListViewModel { Fics = Model.SelectedFicAsEnumerable, ShowDetailed = Mode.ShowDetailed, ShowSimilarButton = false })
+@await Html.PartialAsync("_StoryListPartial", new StoryListViewModel { Fics = Model.SelectedFicAsEnumerable, ShowDetailed = Model.ShowDetailed, ShowSimilarButton = false })
 
 <h3>Similar Fics</h2>
 
-@await Html.PartialAsync("_StoryListPartial", new StoryListViewModel { Fics = Model.SimilarFics, ShowDetailed = Mode.ShowDetailed, ShowSimilarButton = true })
+@await Html.PartialAsync("_StoryListPartial", new StoryListViewModel { Fics = Model.SimilarFics, ShowDetailed = Model.ShowDetailed, ShowSimilarButton = true })
