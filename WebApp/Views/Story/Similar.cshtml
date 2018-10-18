@@ -6,8 +6,8 @@
 
 <h2>Selected Fic</h2>
 
-@await Html.PartialAsync("_ListPartial", Model.SelectedFicAsEnumerable)
+@await Html.PartialAsync("_StoryListPartial", new { Fics = Model.SelectedFicAsEnumerable, ShowDetail = false, ShowSimilarButton = false })
 
 <h2>Similar Fics</h2>
 
-@await Html.PartialAsync("_ListPartial", Model.SimilarFics)
+@await Html.PartialAsync("_StoryListPartial", new { Fics = Model.SimilarFics, ShowDetail = false, ShowSimilarButton = true })

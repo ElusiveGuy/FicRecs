@@ -1,4 +1,4 @@
-@model IEnumerable<FicRecs.DatabaseLib.StoryDetails>
+@model StoryListViewModel
 
 @{
     ViewData["Title"] = "Index";
@@ -25,15 +25,18 @@
             <th>
                 @Html.DisplayNameFor(model => model.Words)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Reviews)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Favs)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Follows)
-            </th>
+            @if (ShowDetail)
+            {
+                <th>
+                    @Html.DisplayNameFor(model => model.Reviews)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Favs)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Follows)
+                </th>
+            }
             <th>
                 @Html.DisplayNameFor(model => model.Published)
             </th>
@@ -44,7 +47,7 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+@foreach (var item in Model.Fics) {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Title)
@@ -64,15 +67,18 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Words)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Reviews)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Favs)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Follows)
-            </td>
+            @if (ShowDetail)
+            {
+                <td>
+                    @Html.DisplayFor(modelItem => item.Reviews)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Favs)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Follows)
+                </td>
+            }
             <td>
                 @(item.Published.HasValue ? item.Published.Value.ToString("yyyy-MM-dd") : "Unknown")
             </td>
@@ -94,12 +100,15 @@
                 <div class="table-button">
                     <a class="btn btn-primary" target="_blank" href="@Html.DisplayFor(modelItem => item.Url)">View</a>
                 </div>
-                <div class="table-button">
-                    <form method="GET">
-                        <input type="hidden" name="storyId" value="@item.StoryId" />
-                        <button type="submit" class="btn btn-default">Similar</button>
-                    </form>
-                </div>
+                @if (ShowSimilarButton)
+                {
+                    <div class="table-button">
+                        <form method="GET">
+                            <input type="hidden" name="storyId" value="@item.StoryId" />
+                            <button type="submit" class="btn btn-default">Similar</button>
+                        </form>
+                    </div>
+                }
             </td>
         </tr>
 }
