@@ -40,9 +40,6 @@
             <th>
                 @Html.DisplayNameFor(model => model.Complete)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Url)
-            </th>
             <th></th>
         </tr>
     </thead>
@@ -83,10 +80,7 @@
                 @Html.DisplayFor(modelItem => item.Complete)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Url)
-            </td>
-            <td>
-                <a class="btn btn-primary" href="@Html.DisplayFor(modelItem => item.Url)">View</a>
+                <a class="btn btn-primary" target="_blank" href="@Html.DisplayFor(modelItem => item.Url)">View</a>
                 <form method="GET">
                     <input type="hidden" name="storyId" value="@item.StoryId" />
                     <button type="submit" class="btn btn-default">Similar</button>
