@@ -1,3 +1,7 @@
 @model StoryPaginationViewModel
 
-<a asp-all-route-data="Request.QueryString"><< First</a>| <a>< Prev</a> | Page @Model.CurrentPage of @Model.TotalPages | <a>Next ></a> | <a>Last >></a>
+@{
+    var qs = Request.QueryString;
+}
+
+<a asp-all-route-data="qs"><< First</a>| <a>< Prev</a> | Page @Model.CurrentPage of @Model.TotalPages | <a>Next ></a> | <a>Last >></a>
