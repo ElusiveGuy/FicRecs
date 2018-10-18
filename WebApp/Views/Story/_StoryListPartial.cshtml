@@ -28,7 +28,7 @@
             <th>
                 @Html.DisplayNameFor(model => dummyfic.Words)
             </th>
-            @if (ShowDetail)
+            @if (Model.ShowDetail)
             {
                 <th>
                     @Html.DisplayNameFor(model => dummyfic.Reviews)
@@ -70,7 +70,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Words)
             </td>
-            @if (ShowDetail)
+            @if (Model.ShowDetail)
             {
                 <td>
                     @Html.DisplayFor(modelItem => item.Reviews)
@@ -103,7 +103,7 @@
                 <div class="table-button">
                     <a class="btn btn-primary" target="_blank" href="@Html.DisplayFor(modelItem => item.Url)">View</a>
                 </div>
-                @if (ShowSimilarButton)
+                @if (Model.ShowSimilarButton)
                 {
                     <div class="table-button">
                         <form method="GET">
