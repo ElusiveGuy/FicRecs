@@ -86,17 +86,17 @@
                 @((item?.Published.HasValue ?? false) ? item.Published.Value.ToString("yyyy-MM-dd") : "Unknown")
             </td>
             <td>
-                @if (item.Complete == true)
+                @if (item.Complete == null)
+                {
+                    <text>Unknown</text>
+                }
+                else if (item.Complete == true)
                 {
                     <text>Complete</text>
                 }
                 else if (item.Complete == false)
                 {
                     <text>Incomplete</text>
-                }
-                else if (item.Complete == null)
-                {
-                    <text>Unknown</text>
                 }
             </td>
             <td>
