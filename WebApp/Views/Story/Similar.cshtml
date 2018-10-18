@@ -10,13 +10,13 @@
     <input type="hidden" name="storyId" value="@Model.StoryId" />
     @if (Model.ShowDetailed)
     {
-        <input type="hidden" name="showDetailed" value="true" />
-        <button type="submit" class="btn btn-default">Show detailed tables</button>
+        <input type="hidden" name="showDetailed" value="false" />
+        <button type="submit" class="btn btn-default">Show simple tables</button>
     }
     else
     {
-        <input type="hidden" name="showDetailed" value="false" />
-        <button type="submit" class="btn btn-default">Show simple tables</button>
+        <input type="hidden" name="showDetailed" value="true" />
+        <button type="submit" class="btn btn-default">Show detailed tables</button>
     }
 </form>
 
