@@ -56,6 +56,22 @@ namespace WebApp.Controllers
             return View(model);
         }
 
+        public async Task<IActionResult> Random(bool showDetailed = false)
+        {
+            var fics = _context.StoryDetails
+                                .OrderBy(g => Guid.NewGuid())
+                                .Take(pageSize);
+
+            var model = new StoryIndexViewModel
+            {
+                ShowDetailed = showDetailed,
+                Fics = await fics.ToListAsync(),
+                CurrentPage = 1,
+                TotalPages = 1
+            };
+            return View("Index");
+        }
+
         // GET: StoryDetails/Details/5
         public async Task<IActionResult> Details(int? id)
         {
