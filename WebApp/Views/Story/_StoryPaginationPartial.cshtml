@@ -1,7 +1,7 @@
 @model StoryPaginationViewModel
 
 @{
-    var qs = Context.Request.QueryString.Keys.Cast<string>().ToDictionary(k => k, v => Context.Request.QueryString[v]);
+    var qs = Context.Request.Query.Keys.Cast<string>().ToDictionary(k => k, v => Context.Request.QueryString[v]);
 }
 
 <a asp-all-route-data="qs"><< First</a>| <a>< Prev</a> | Page @Model.CurrentPage of @Model.TotalPages | <a>Next ></a> | <a>Last >></a>
