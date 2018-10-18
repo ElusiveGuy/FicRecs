@@ -6,6 +6,8 @@ namespace FicRecs.WebApp.Models
 {
     public class StorySimilarViewModel
     {
+        public int StoryId { get; set; }
+
         public IEnumerable<StoryDetails> SimilarFics { get; set; }
 
         public StoryDetails SelectedFic { get; set; }

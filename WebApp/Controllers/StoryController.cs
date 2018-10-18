@@ -25,7 +25,7 @@ namespace WebApp.Controllers
             return View(await _context.StoryDetails.ToListAsync());
         }
 
-        public async Task<IActionResult> Similar(int storyId)
+        public async Task<IActionResult> Similar(int storyId, bool showDetailed)
         {
             var selectedFic = _context.StoryDetails.Where(d => d.StoryId == storyId);
             var similarFics = _context.StoryMatrix
@@ -36,6 +36,8 @@ namespace WebApp.Controllers
 
             var model = new StorySimilarViewModel
             {
+                StoryId = storyId,
+                ShowDetailed = showDetailed,
                 SelectedFic = await selectedFic.SingleOrDefaultAsync(),
                 SimilarFics = await similarFics.Take(20).ToListAsync(),
             };
