@@ -7,17 +7,28 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using FicRecs.DatabaseLib;
 using FicRecs.WebApp.Models;
+using System.Threading;
 
 namespace WebApp.Controllers
 {
     public class StoryController : Controller
     {
         const int pageSize = 20;
+        ThreadLocal<Random> random;
 
         private readonly FicRecsDbContext _context;
 
         public StoryController(FicRecsDbContext context)
         {
+            Random rand = new Random();
+            random = new ThreadLocal<Random>(() =>
+            {
+                lock(rand)
+                {
+                    return new Random(rand.Next());
+                }
+            });
+
             _context = context;
         }
 
@@ -56,20 +67,14 @@ namespace WebApp.Controllers
             return View(model);
         }
 
-        public async Task<IActionResult> Random(bool showDetailed = false)
+        public async Task<IActionResult> Random()
         {
-            var fics = _context.StoryDetails
-                                .OrderBy(g => Guid.NewGuid())
-                                .Take(pageSize);
+            var storyId = _context.StoryDetails
+                                .Skip(random.Value.Next(await _context.StoryDetails.CountAsync()))
+                                .Select(s => s.StoryId)
+                                .Single();
 
-            var model = new StoryIndexViewModel
-            {
-                ShowDetailed = showDetailed,
-                Fics = await fics.ToListAsync(),
-                CurrentPage = 1,
-                TotalPages = 1
-            };
-            return View("Index", model);
+            return RedirectToAction("Similar", new { storyId = storyId });
         }
 
         // GET: StoryDetails/Details/5
