@@ -9,11 +9,11 @@ using FicRecs.DatabaseLib;
 
 namespace WebApp.Controllers
 {
-    public class StoryDetailsController : Controller
+    public class StoryController : Controller
     {
         private readonly FicRecsDbContext _context;
 
-        public StoryDetailsController(FicRecsDbContext context)
+        public StoryController(FicRecsDbContext context)
         {
             _context = context;
         }
