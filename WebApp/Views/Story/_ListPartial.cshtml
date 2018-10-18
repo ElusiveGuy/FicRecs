@@ -77,12 +77,17 @@
                 @Html.DisplayFor(modelItem => item.Published)
             </td>
             <td>
-                @if (item.Complete == null) {
-                    Unknown
-                } else if (item.Complete) {
-                    Complete
-                } else {
-                    Incomplete
+                @if (item.Complete == true)
+                {
+                    <text>Complete</text>
+                }
+                else if (item.Complete == false)
+                {
+                    <text>Incomplete</text>
+                }
+                else if (item.Complete == null)
+                {
+                    <text>Unknown</text>
                 }
             </td>
             <td>
