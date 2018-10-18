@@ -12,6 +12,8 @@ namespace FicRecs.WebApp.Models
 
         public IEnumerable<StoryDetails> SelectedFicAsEnumerable => new StoryDetails[] { SelectedFic };
 
+        public bool ShowDetailed { get; set; }
+
         public int CurrentPage { get; set; }
 
         public int TotalPages { get; set; }
