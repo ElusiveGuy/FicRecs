@@ -43,6 +43,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.Url)
             </th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -83,6 +84,13 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Url)
+            </td>
+            <td>
+                <a class="btn btn-primary" href="@Html.DisplayFor(modelItem => item.Url)">View</a>
+                <form method="GET">
+                    <input type="hidden" name="storyId" value="@item.StoryId" />
+                    <button type="submit" class="btn btn-default">Similar</button>
+                </form>
             </td>
         </tr>
 }
