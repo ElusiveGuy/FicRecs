@@ -69,7 +69,7 @@ namespace WebApp.Controllers
                 CurrentPage = 1,
                 TotalPages = 1
             };
-            return View("Index");
+            return View("Index", model);
         }
 
         // GET: StoryDetails/Details/5
