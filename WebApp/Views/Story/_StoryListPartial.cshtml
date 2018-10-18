@@ -102,7 +102,7 @@
                 @if (Model.ShowSimilarButton)
                 {
                     <div class="table-button">
-                        <form method="GET">
+                        <form asp-controller="Story" asp-action="Similar" method="GET">
                             <input type="hidden" name="storyId" value="@item.StoryId" />
                             <button type="submit" class="btn btn-default">Similar</button>
                         </form>
