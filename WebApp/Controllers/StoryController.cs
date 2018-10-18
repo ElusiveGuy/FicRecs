@@ -72,7 +72,7 @@ namespace WebApp.Controllers
             var storyId = _context.StoryDetails
                                 .Skip(random.Value.Next(await _context.StoryDetails.CountAsync()))
                                 .Select(s => s.StoryId)
-                                .Single();
+                                .First();
 
             return RedirectToAction("Similar", new { storyId = storyId });
         }
