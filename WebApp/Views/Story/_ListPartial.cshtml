@@ -74,7 +74,7 @@
                 @Html.DisplayFor(modelItem => item.Follows)
             </td>
             <td>
-                @item.Published.ToString("yyyy-MM-dd")
+                @(item.Published.HasValue ? item.Published.Value.ToString("yyyy-MM-dd") : "Unknown")
             </td>
             <td>
                 @if (item.Complete == true)
