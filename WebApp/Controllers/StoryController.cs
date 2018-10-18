@@ -24,10 +24,10 @@ namespace WebApp.Controllers
             return View(await _context.StoryDetails.ToListAsync());
         }
 
-        public async Task<IActionResult> Similar(int id)
+        public async Task<IActionResult> Similar(int storyId)
         {
             var similarFics = _context.StoryMatrix
-                                .Where(m => m.StoryA == id)
+                                .Where(m => m.StoryA == storyId)
                                 .OrderByDescending(m => m.Similarity)
                                 .Join(_context.StoryDetails, m => m.StoryB, s => s.StoryId, (m, s) => s);
             var page = similarFics.Take(10);    
