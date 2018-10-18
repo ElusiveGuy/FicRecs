@@ -12,6 +12,8 @@ namespace WebApp.Controllers
 {
     public class StoryController : Controller
     {
+        const int pageSize = 20;
+
         private readonly FicRecsDbContext _context;
 
         public StoryController(FicRecsDbContext context)
@@ -20,9 +22,18 @@ namespace WebApp.Controllers
         }
 
         // GET: StoryDetails
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(bool showDetailed = false, int page = 1)
         {
-            return View(await _context.StoryDetails.ToListAsync());
+            var fics = _context.StoryDetails;
+
+            var model = new StoryIndexViewModel
+            {
+                ShowDetailed = showDetailed,
+                Fics = await fics.Skip((page - 1) * pageSize).Take(page * pageSize).ToListAsync(),
+                CurrentPage = page,
+                TotalPages = await fics.CountAsync() / pageSize
+            };
+            return View(model);
         }
 
         public async Task<IActionResult> Similar(int storyId = -1, bool showDetailed = false, int page = 1)
@@ -32,8 +43,6 @@ namespace WebApp.Controllers
                                 .Where(m => m.StoryA == storyId)
                                 .OrderByDescending(m => m.Similarity)
                                 .Join(_context.StoryDetails, m => m.StoryB, d => d.StoryId, (m, d) => d);
-            
-            var pageSize = 20;
 
             var model = new StorySimilarViewModel
             {

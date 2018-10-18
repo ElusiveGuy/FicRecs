@@ -1,4 +1,4 @@
-@model IEnumerable<FicRecs.DatabaseLib.StoryDetails>
+@model StoryIndexViewModel
 
 @{
     ViewData["Title"] = "Index";
@@ -6,4 +6,4 @@
 
 <h2>Index</h2>
 
-@await Html.PartialAsync("_StoryListPartial", new StoryListViewModel { Fics = Model })
+@await Html.PartialAsync("_StoryListPartial", new StoryListViewModel { Fics = Model.Fics, ShowDetailed = Model.ShowDetailed })
