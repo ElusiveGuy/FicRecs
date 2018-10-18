@@ -1,4 +1,4 @@
-@model FicRecs.WebApp.Models.StoryListViewModel
+@model StoryListViewModel
 
 @{
     ViewData["Title"] = "Index";
@@ -8,40 +8,40 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Title)
+                @Html.DisplayNameFor(model => model.Fics.Title)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Author)
+                @Html.DisplayNameFor(model => model.Fics.Author)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Summary)
+                @Html.DisplayNameFor(model => model.Fics.Summary)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Characters)
+                @Html.DisplayNameFor(model => model.Fics.Characters)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Chapters)
+                @Html.DisplayNameFor(model => model.Fics.Chapters)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Words)
+                @Html.DisplayNameFor(model => model.Fics.Words)
             </th>
             @if (ShowDetail)
             {
                 <th>
-                    @Html.DisplayNameFor(model => model.Reviews)
+                    @Html.DisplayNameFor(model => model.Fics.Reviews)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Favs)
+                    @Html.DisplayNameFor(model => model.Fics.Favs)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Follows)
+                    @Html.DisplayNameFor(model => model.Fics.Follows)
                 </th>
             }
             <th>
-                @Html.DisplayNameFor(model => model.Published)
+                @Html.DisplayNameFor(model => model.Fics.Published)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Complete)
+                @Html.DisplayNameFor(model => model.Fics.Complete)
             </th>
             <th></th>
         </tr>
