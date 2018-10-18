@@ -5,6 +5,8 @@
 document.querySelectorAll('.pagination-link').forEach(l => {
     if (!location.search)
         l.href = '?page=' + l.dataset['page'];
+    else if (!location.search.includes('page'))
+        l.href = location.search + '&page=' + l.dataset['page'];
     else
         l.href = location.search.replace(/page=\d+/, 'page=' + l.dataset['page']);
 });
