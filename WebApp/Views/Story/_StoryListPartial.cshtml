@@ -83,7 +83,7 @@
                 </td>
             }
             <td>
-                @(item.Published.HasValue ? item.Published.Value.ToString("yyyy-MM-dd") : "Unknown")
+                @((item.Published?.HasValue ?? false) ? item.Published.Value.ToString("yyyy-MM-dd") : "Unknown")
             </td>
             <td>
                 @if (item.Complete == true)
