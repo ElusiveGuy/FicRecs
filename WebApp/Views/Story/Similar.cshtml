@@ -1,0 +1,9 @@
+@model IEnumerable<FicRecs.DatabaseLib.StoryDetails>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Similar Fics</h2>
+
+@await Html.PartialAsync("_ListPartial")
