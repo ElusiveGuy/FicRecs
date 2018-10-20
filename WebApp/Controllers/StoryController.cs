@@ -40,7 +40,7 @@ namespace WebApp.Controllers
             var model = new StoryIndexViewModel
             {
                 ShowDetailed = showDetailed,
-                Fics = await fics.Skip((page - 1) * pageSize).Take(page * pageSize).ToListAsync(),
+                Fics = await fics.Skip((page - 1) * pageSize).Take(pageSize).ToListAsync(),
                 CurrentPage = page,
                 TotalPages = await fics.CountAsync() / pageSize
             };
@@ -65,7 +65,7 @@ namespace WebApp.Controllers
                 StoryId = storyId,
                 ShowDetailed = showDetailed,
                 SelectedFic = await selectedFic.SingleOrDefaultAsync(),
-                SimilarFics = await similarFics.Skip((page - 1) * pageSize).Take(page * pageSize).ToListAsync(),
+                SimilarFics = await similarFics.Skip((page - 1) * pageSize).Take(pageSize).ToListAsync(),
                 CurrentPage = page,
                 TotalPages = await similarFics.CountAsync() / pageSize
             };
