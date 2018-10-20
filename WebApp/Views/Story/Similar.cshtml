@@ -6,6 +6,8 @@
 
 <h2>FicRecs</h2>
 
+@await Html.PartialAsync("_StoryBrowseSearchPartial")
+
 <form method="GET">
     <input type="hidden" name="storyId" value="@Model.StoryId" />
     @if (Model.ShowDetailed)
