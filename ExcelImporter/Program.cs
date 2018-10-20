@@ -73,9 +73,9 @@ namespace FicRecs.ExcelImporter
                         rowidmap[row - 1] = story.StoryId;
                         validids.Add(story.StoryId);
 
-                        Console.Write($"\rImported info row {row - 1}, id {story.StoryId}");
+                        Console.Write($"\rImported info row {row - 1}, id {story.StoryId}".PadRight(60));
                     }
-                    Console.WriteLine($"\rImported {stories} stories");
+                    Console.WriteLine($"\rImported {stories} stories".PadRight(60));
 
                     var weightsheet = p.Workbook.Worksheets["Weights"];
                     var idsheet = p.Workbook.Worksheets["Nearest IDs"];
@@ -92,11 +92,11 @@ namespace FicRecs.ExcelImporter
                                     Similarity = weightsheet.Cells[row, col].GetValue<float>()
                                 };
 
-                                Console.Write($"\rImported rec row {row}, col {col}");
+                                Console.Write($"\rImported rec row {row}, col {col}".PadRight(60));
 
                                 if (!validids.Contains(matrix.StoryB))
                                 {
-                                    Console.WriteLine($"\rNo fic info for {matrix.StoryB}, ignoring");
+                                    Console.WriteLine($"\rNo fic info for {matrix.StoryB}, ignoring".PadRight(60));
                                     continue;
                                 }
 
