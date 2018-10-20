@@ -27,7 +27,7 @@ namespace FicRecs.ExcelImporter
             {
                 using (var context = new FicRecsDbContext())
                 {
-                    var detailsheet = p.Workbook.Worksheets["Fic info"];
+                    var detailsheet = p.Workbook.Worksheets["Fic Info"];
                     var colnames = new Dictionary<string, int>();
                     for (int col = 1; detailsheet.Cells[1, col].Value != null; col++)
                     {
@@ -68,37 +68,38 @@ namespace FicRecs.ExcelImporter
                         
                         context.StoryDetails.Add(story);
                         
-                        rowidmap[GetCol<int>(row, "Row")] = GetCol<int>(row, "ID");
+                        rowidmap[row - 1] = GetCol<int>(row, "ID");
                     }
 
-                    var matrixsheet = p.Workbook.Worksheets["Adjacency matrix"];
-                    for (int row = 1, col = 1; matrixsheet.Cells[row, col].Value != null; row++, col = 1)
+                    var weightsheet = p.Workbook.Worksheets["Weights"];
+                    var idsheet = p.Workbook.Worksheets["Nearest IDs"];
+                    for (int row = 1, col = 1; weightsheet.Cells[row, col].Value != null; row++, col = 1)
                     {
-                        for (; matrixsheet.Cells[row, col].Value != null; col++)
+                        for (; weightsheet.Cells[row, col].Value != null; col++)
                         {
                             try
                             {
                                 var matrix = new StoryMatrix()
                                 {
                                     StoryA = rowidmap[row],
-                                    StoryB = rowidmap[col],
-                                    Similarity = matrixsheet.Cells[row, col].GetValue<float>()
+                                    StoryB = idsheet.Cells[row, col].GetValue<int>(),
+                                    Similarity = weightsheet.Cells[row, col].GetValue<float>()
                                 };
 
                                 context.StoryMatrix.Add(matrix);
                             }
                             catch (InvalidCastException)
                             {
-                                if (matrixsheet.Cells[row, col].GetValue<ExcelErrorValue>().Type == eErrorType.Num)
+                                if (weightsheet.Cells[row, col].GetValue<ExcelErrorValue>().Type == eErrorType.Num)
                                 {
                                     continue;
                                 }
                                 else
                                 {
                                     Console.WriteLine("[{0}] ({1}) {2}",
-                                        matrixsheet.Cells[row, col].Value,
-                                        matrixsheet.Cells[row, col].Value.GetType(),
-                                        matrixsheet.Cells[row, col].Value.ToString());
+                                        weightsheet.Cells[row, col].Value,
+                                        weightsheet.Cells[row, col].Value.GetType(),
+                                        weightsheet.Cells[row, col].Value.ToString());
                                     throw;
                                 }
                             }
