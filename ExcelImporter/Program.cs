@@ -42,7 +42,8 @@ namespace FicRecs.ExcelImporter
                     var rowidmap = new Dictionary<int, int>();
                     var validids = new HashSet<int>();
                     
-                    for (int row = 2; !String.IsNullOrWhiteSpace(GetCol<string>(row, "ID")); row++)
+                    int stories = 0;
+                    for (int row = 2; !String.IsNullOrWhiteSpace(GetCol<string>(row, "ID")); row++, stories++)
                     {
                         var story = new StoryDetails
                         {
@@ -69,9 +70,12 @@ namespace FicRecs.ExcelImporter
                         
                         context.StoryDetails.Add(story);
                         
-                        rowidmap[row - 1] = GetCol<int>(row, "ID");
-                        validids.Add(GetCol<int>(row, "ID"));
+                        rowidmap[row - 1] = story.StoryId;
+                        validids.Add(story.StoryId);
+
+                        Console.Write($"\rImported info row {row - 1}, id {story.StoryId}");
                     }
+                    Console.WriteLine($"\rImported {stories} stories");
 
                     var weightsheet = p.Workbook.Worksheets["Weights"];
                     var idsheet = p.Workbook.Worksheets["Nearest IDs"];
@@ -88,9 +92,11 @@ namespace FicRecs.ExcelImporter
                                     Similarity = weightsheet.Cells[row, col].GetValue<float>()
                                 };
 
+                                Console.Write($"\rImported rec row {row}, col {col}");
+
                                 if (!validids.Contains(matrix.StoryB))
                                 {
-                                    Console.WriteLine($"No fic info for {matrix.StoryB}, ignoring");
+                                    Console.WriteLine($"\rNo fic info for {matrix.StoryB}, ignoring");
                                     continue;
                                 }
 
@@ -104,7 +110,7 @@ namespace FicRecs.ExcelImporter
                                 }
                                 else
                                 {
-                                    Console.WriteLine("[{0}] ({1}) {2}",
+                                    Console.WriteLine("\r[{0}] ({1}) {2}",
                                         weightsheet.Cells[row, col].Value,
                                         weightsheet.Cells[row, col].Value.GetType(),
                                         weightsheet.Cells[row, col].Value.ToString());
