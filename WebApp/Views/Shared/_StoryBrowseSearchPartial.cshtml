@@ -1,0 +1,20 @@
+<div class="row">
+    <div class="col-md-3">
+        <form asp-controller="Story" asp-action="Similar" method="GET">
+            <div class="form-group">
+                <div class="input-group">
+                    <input class="form-control" type="text" name="storyId" placeholder="Story ID" />
+                    <span class="input-group-btn">
+                        <button type="submit" class="btn btn-primary">View</button>
+                    </span>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="col-md-3">
+        <a asp-area="" asp-controller="Story" asp-action="Index" class="btn btn-default" role="button">View full fic list</a>
+    </div>
+    <div class="col-md-3">
+        <a asp-area="" asp-controller="Story" asp-action="Random" class="btn btn-default" role="button">Random</a>
+    </div>
+</div>

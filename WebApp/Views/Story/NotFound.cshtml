@@ -1,0 +1,11 @@
+@model int
+
+@{
+    ViewData["Title"] = $"Story ID {Model} not found";
+}
+
+<h2>FicRecs</h2>
+
+<p>No story matching id @Model was found</p>>
+
+@await Html.PartialAsync("_StoryBrowseSearchPartial");

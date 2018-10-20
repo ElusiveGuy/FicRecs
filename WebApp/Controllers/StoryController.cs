@@ -49,6 +49,11 @@ namespace WebApp.Controllers
 
         public async Task<IActionResult> Similar(int storyId = -1, bool showDetailed = false, int page = 1)
         {
+            if (!StoryDetailsExists(storyId))
+            {
+                return View("NotFound", storyId);
+            }
+
             var selectedFic = _context.StoryDetails.Where(d => d.StoryId == storyId);
             var similarFics = _context.StoryMatrix
                                 .Where(m => m.StoryA == storyId)
