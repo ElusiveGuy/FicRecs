@@ -40,6 +40,7 @@ namespace FicRecs.ExcelImporter
                     }
 
                     var rowidmap = new Dictionary<int, int>();
+                    var validids = new HashSet<int>();
                     
                     for (int row = 2; !String.IsNullOrWhiteSpace(GetCol<string>(row, "ID")); row++)
                     {
@@ -69,6 +70,7 @@ namespace FicRecs.ExcelImporter
                         context.StoryDetails.Add(story);
                         
                         rowidmap[row - 1] = GetCol<int>(row, "ID");
+                        validids.Add(GetCol<int>(row, "ID"));
                     }
 
                     var weightsheet = p.Workbook.Worksheets["Weights"];
@@ -85,6 +87,12 @@ namespace FicRecs.ExcelImporter
                                     StoryB = idsheet.Cells[row, col].GetValue<int>(),
                                     Similarity = weightsheet.Cells[row, col].GetValue<float>()
                                 };
+
+                                if (!validids.Contains(matrix.StoryB))
+                                {
+                                    Console.WriteLine($"No fic info for {matrix.StoryB}, ignoring");
+                                    continue;
+                                }
 
                                 context.StoryMatrix.Add(matrix);
                             }
